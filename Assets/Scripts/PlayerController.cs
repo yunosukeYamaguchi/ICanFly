@@ -6,6 +6,9 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private bool isGrounded;
 
+    private int leftInputCount = 0;
+    private int rightInputCount = 0;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -13,9 +16,38 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (Input.anyKeyDown)
+        // 左右キーが押されたらカウントアップ
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            rightInputCount++;
+        }
+
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            leftInputCount++;
+        }
+
+        // どちらかのキーが押された瞬間にジャンプ処理（着地中限定）
+        if ((Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow)))
+        {
+            // 入力の差を求める
+            int inputDiff = rightInputCount - leftInputCount;
+
+            // 差に応じて角度を決める（正：左に曲がる、負：右に曲がる）
+            float angle = Mathf.Clamp(inputDiff * 10f, -45f, 45f); // 最大 ±45度まで傾ける
+
+            // 角度をラジアンに変換
+            float angleRad = angle * Mathf.Deg2Rad;
+
+            // ベクトルを計算（角度による方向）
+            Vector2 jumpDirection = new Vector2(Mathf.Sin(angleRad), Mathf.Cos(angleRad)).normalized;
+
+            // ジャンプ！
+            rb.linearVelocity = jumpDirection * jumpForce;
+
+            // カウントリセット
+            leftInputCount = 0;
+            rightInputCount = 0;
         }
     }
 
