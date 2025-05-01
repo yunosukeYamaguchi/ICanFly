@@ -9,6 +9,6 @@ public class HeightDisplay : MonoBehaviour
     void Update()
     {
         float height = player.position.y;
-        heightText.text = "高さ: " + height.ToString("F1") + " m";
+        heightText.text = "高さ：" + height.ToString("F1") + " m";
     }
 }

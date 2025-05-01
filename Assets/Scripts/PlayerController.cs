@@ -9,14 +9,33 @@ public class PlayerController : MonoBehaviour
     private int leftInputCount = 0;
     private int rightInputCount = 0;
 
+    private TimeLimitController timeLimitController;
+
+    [SerializeField] private GameManager gameManager;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        timeLimitController = FindObjectOfType<TimeLimitController>();
     }
 
     void Update()
     {
-        // 左右キーが押されたらカウントアップ
+        //タイムリミット内なら入力可
+        if (timeLimitController != null && timeLimitController.inputEnabled)
+        {
+            Fly();
+        }
+        else if (isGrounded)
+        {
+            gameManager.ResultScene();
+        }
+    }
+
+    void Fly()
+    {
+            // 左右キーが押されたらカウントアップ
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             rightInputCount++;
