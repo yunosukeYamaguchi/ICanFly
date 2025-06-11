@@ -6,49 +6,42 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private bool isGrounded;
 
-    private int leftInputCount = 0;
-    private int rightInputCount = 0;
-
     private TimeLimitController timeLimitController;
 
     [SerializeField] private GameManager gameManager;
 
     [Header("羽オブジェクトの設定")]
-    public Transform rightWing;           // 右羽（インスペクターで設定）
-    public Transform leftWing;            // 左羽（インスペクターで設定）
+    public Transform rightWing;
+    public Transform leftWing;
 
     [Header("羽ばたき設定")]
-    public float baseSpeed = 10f;         // 羽ばたきの基本速度（連打速度の掛け算用）
-    public float flapAngle = 20f;         // 羽ばたきの角度（Z軸回転）
-    public float minFlapDuration = 0.05f; // 羽ばたきの最短速度（連打上限）
+    public float baseSpeed = 10f;
+    public float flapAngle = 20f;
+    public float minFlapDuration = 0.05f;
 
-    private Coroutine rightFlapCoroutine = null; // 右羽の羽ばたき処理
-    private Coroutine leftFlapCoroutine = null;  // 左羽の羽ばたき処理
+    private Coroutine rightFlapCoroutine = null;
+    private Coroutine leftFlapCoroutine = null;
     private float lastRightInputTime = 0f;
     private float lastLeftInputTime = 0f;
 
     [Header("プレイヤーのSpriteRenderer")]
-    public SpriteRenderer playerSpriteRenderer; // プレイヤーのSpriteRendererを指定
+    public SpriteRenderer playerSpriteRenderer;
 
     [Header("警告用の画像スプライト")]
-    public Sprite warningSprite; // 残り5秒で切り替える画像
+    public Sprite warningSprite;
 
-    private bool hasSwitchedImage = false; // 一度だけ切り替える用
-
-    bool karaage; //唐揚げ化したか
+    private bool hasSwitchedImage = false;
+    bool karaage;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
         timeLimitController = FindObjectOfType<TimeLimitController>();
-
         karaage = true;
     }
 
     void Update()
     {
-        //タイムリミット内なら入力可
         if (timeLimitController != null && timeLimitController.inputEnabled)
         {
             Fly();
@@ -56,111 +49,63 @@ public class PlayerController : MonoBehaviour
         else if (isGrounded)
         {
             if (playerSpriteRenderer != null && warningSprite != null && karaage)
-                {
-                    playerSpriteRenderer.sprite = warningSprite;
-                    hasSwitchedImage = true;
-
-                    karaage = false;
-                }
-
+            {
+                playerSpriteRenderer.sprite = warningSprite;
+                hasSwitchedImage = true;
+                karaage = false;
+            }
             gameManager.ResultScene();
         }
 
-        // 羽オブジェクトの表示切り替え
         if (rightWing != null) rightWing.gameObject.SetActive(!isGrounded);
         if (leftWing != null) leftWing.gameObject.SetActive(!isGrounded);
 
-        // 右キーを押した瞬間に右羽ばたき（押しっぱなしは無効）
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        // 「/ . : ;」キーが押されたら両羽を同時に回転（ジャンプ準備）
+        if (Input.GetKeyDown(KeyCode.Slash) || Input.GetKeyDown(KeyCode.Period) || Input.GetKeyDown(KeyCode.Colon) || Input.GetKeyDown(KeyCode.Semicolon))
         {
-            float now = Time.time;
-            float interval = now - lastRightInputTime;
-            lastRightInputTime = now;
+            // 右羽回転（右回転）
+            if (rightFlapCoroutine != null) StopCoroutine(rightFlapCoroutine);
+            rightFlapCoroutine = StartCoroutine(FlapOnce(rightWing, -flapAngle, baseSpeed));
 
-            float flapDuration = Mathf.Max(interval, minFlapDuration);
-            float flapSpeed = 1f / flapDuration * baseSpeed;
-
-            if (rightFlapCoroutine != null)
-                StopCoroutine(rightFlapCoroutine);
-
-            rightFlapCoroutine = StartCoroutine(FlapOnce(rightWing, -flapAngle, flapSpeed));
+            // 左羽回転（左回転）
+            if (leftFlapCoroutine != null) StopCoroutine(leftFlapCoroutine);
+            leftFlapCoroutine = StartCoroutine(FlapOnce(leftWing, flapAngle, baseSpeed));
         }
 
-        // 左キーを押した瞬間に左羽ばたき（押しっぱなしは無効）
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        // 「/ . : ;」キーが離されたら両羽リセット
+        if (Input.GetKeyUp(KeyCode.Slash) || Input.GetKeyUp(KeyCode.Period) || Input.GetKeyUp(KeyCode.Colon) || Input.GetKeyUp(KeyCode.Semicolon))
         {
-            float now = Time.time;
-            float interval = now - lastLeftInputTime;
-            lastLeftInputTime = now;
-
-            float flapDuration = Mathf.Max(interval, minFlapDuration);
-            float flapSpeed = 1f / flapDuration * baseSpeed;
-
-            if (leftFlapCoroutine != null)
-                StopCoroutine(leftFlapCoroutine);
-
-            leftFlapCoroutine = StartCoroutine(FlapOnce(leftWing, flapAngle, flapSpeed));
-        }
-
-        // 右キーを離したら右羽ばたきを即停止＆角度リセット
-        if (Input.GetKeyUp(KeyCode.RightArrow))
-        {
+            // 右羽リセット
             if (rightFlapCoroutine != null)
             {
                 StopCoroutine(rightFlapCoroutine);
                 rightFlapCoroutine = null;
-                if (rightWing != null)
-                    rightWing.localRotation = Quaternion.Euler(0, 0, 0);
+                if (rightWing != null) rightWing.localRotation = Quaternion.Euler(0, 0, 0);
             }
-        }
 
-        // 左キーを離したら左羽ばたきを即停止＆角度リセット
-        if (Input.GetKeyUp(KeyCode.LeftArrow))
-        {
+            // 左羽リセット
             if (leftFlapCoroutine != null)
             {
                 StopCoroutine(leftFlapCoroutine);
                 leftFlapCoroutine = null;
-                if (leftWing != null)
-                    leftWing.localRotation = Quaternion.Euler(0, 0, 0);
+                if (leftWing != null) leftWing.localRotation = Quaternion.Euler(0, 0, 0);
             }
         }
     }
 
     void Fly()
     {
-            // 左右キーが押されたらカウントアップ
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        Vector2 jumpDirection = Vector2.zero;
+
+        // 「/ . : ;」キーが押されたら真上にジャンプ
+        if (Input.GetKeyDown(KeyCode.Slash) || Input.GetKeyDown(KeyCode.Period) || Input.GetKeyDown(KeyCode.Colon) || Input.GetKeyDown(KeyCode.Semicolon))
         {
-            rightInputCount++;
+            jumpDirection = Vector2.up;
         }
 
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (jumpDirection != Vector2.zero)
         {
-            leftInputCount++;
-        }
-
-        // どちらかのキーが押された瞬間にジャンプ処理（着地中限定）
-        if ((Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow)))
-        {
-            // 入力の差を求める
-            int inputDiff = rightInputCount - leftInputCount;
-
-            // 差に応じて角度を決める（正：左に曲がる、負：右に曲がる）
-            float angle = Mathf.Clamp(inputDiff * 10f, -45f, 45f); // 最大 ±45度まで傾ける
-
-            // 角度をラジアンに変換
-            float angleRad = angle * Mathf.Deg2Rad;
-
-            // ベクトルを計算（角度による方向）
-            Vector2 jumpDirection = new Vector2(Mathf.Sin(angleRad), Mathf.Cos(angleRad)).normalized;
-
-            // ジャンプ！
             rb.linearVelocity = jumpDirection * jumpForce;
-
-            // カウントリセット
-            leftInputCount = 0;
-            rightInputCount = 0;
         }
     }
 
