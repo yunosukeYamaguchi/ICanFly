@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a8006883c2c6e184895090a6aa53a575
+guid: bc13d7293e606bf428933e11301c4770
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 989306249605234006
-    second: wing_left_0
+      213: -5351226122377331977
+    second: namaniku_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: wing_left_0
+      name: namaniku_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 559
-        height: 358
+        x: 63
+        y: 57
+        width: 889
+        height: 890
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 65d3bcddac8babd00800000000000000
-      internalID: 989306249605234006
+      spriteID: 7fa78e69130acb5b0800000000000000
+      internalID: -5351226122377331977
       vertices: []
       indices: 
       edges: []

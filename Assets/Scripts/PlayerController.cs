@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("羽ばたき設定")]
     public float baseSpeed = 10f;
-    public float flapAngle = 20f;
+    public float flapAngle = 60f;
     public float minFlapDuration = 0.05f;
 
     private Coroutine rightFlapCoroutine = null;
@@ -50,18 +50,20 @@ public class PlayerController : MonoBehaviour
         {
             if (playerSpriteRenderer != null && warningSprite != null && karaage)
             {
-                playerSpriteRenderer.sprite = warningSprite;
+                //playerSpriteRenderer.sprite = warningSprite;
+                this.gameObject.SetActive(false);
                 hasSwitchedImage = true;
                 karaage = false;
             }
             gameManager.ResultScene();
         }
 
-        if (rightWing != null) rightWing.gameObject.SetActive(!isGrounded);
-        if (leftWing != null) leftWing.gameObject.SetActive(!isGrounded);
-
-        // 「/ . : ;」キーが押されたら両羽を同時に回転（ジャンプ準備）
-        if (Input.GetKeyDown(KeyCode.Slash) || Input.GetKeyDown(KeyCode.Period) || Input.GetKeyDown(KeyCode.Colon) || Input.GetKeyDown(KeyCode.Semicolon))
+        // 「/ . : ; [ @」キーが押されたら両羽を同時に回転（ジャンプ準備）
+        if (Input.GetKeyDown(KeyCode.Slash) ||
+            Input.GetKeyDown(KeyCode.Period) ||
+            Input.GetKeyDown(KeyCode.Semicolon) ||
+            Input.GetKeyDown(KeyCode.LeftBracket) ||
+            Input.GetKeyDown(KeyCode.At))
         {
             // 右羽回転（右回転）
             if (rightFlapCoroutine != null) StopCoroutine(rightFlapCoroutine);
@@ -72,8 +74,12 @@ public class PlayerController : MonoBehaviour
             leftFlapCoroutine = StartCoroutine(FlapOnce(leftWing, flapAngle, baseSpeed));
         }
 
-        // 「/ . : ;」キーが離されたら両羽リセット
-        if (Input.GetKeyUp(KeyCode.Slash) || Input.GetKeyUp(KeyCode.Period) || Input.GetKeyUp(KeyCode.Colon) || Input.GetKeyUp(KeyCode.Semicolon))
+        // 「/ . : ; [ @」キーが離されたら両羽リセット
+        if (Input.GetKeyUp(KeyCode.Slash) ||
+            Input.GetKeyUp(KeyCode.Period) ||
+            Input.GetKeyUp(KeyCode.Semicolon) ||
+            Input.GetKeyUp(KeyCode.LeftBracket) ||
+            Input.GetKeyUp(KeyCode.At))
         {
             // 右羽リセット
             if (rightFlapCoroutine != null)
@@ -91,23 +97,27 @@ public class PlayerController : MonoBehaviour
                 if (leftWing != null) leftWing.localRotation = Quaternion.Euler(0, 0, 0);
             }
         }
+
     }
 
     void Fly()
     {
-        Vector2 jumpDirection = Vector2.zero;
+        float i = 0;
 
-        // 「/ . : ;」キーが押されたら真上にジャンプ
-        if (Input.GetKeyDown(KeyCode.Slash) || Input.GetKeyDown(KeyCode.Period) || Input.GetKeyDown(KeyCode.Colon) || Input.GetKeyDown(KeyCode.Semicolon))
-        {
-            jumpDirection = Vector2.up;
-        }
+        // キーの押下を毎フレームチェック（GetKey）
+        if (Input.GetKey(KeyCode.Slash)) i++;
+        if (Input.GetKey(KeyCode.Period)) i++;
+        if (Input.GetKey(KeyCode.Semicolon)) i++;
+        if (Input.GetKey(KeyCode.LeftBracket)) i++;
+        if (Input.GetKey(KeyCode.At)) i++;
 
-        if (jumpDirection != Vector2.zero)
+        if (i > 0)
         {
-            rb.linearVelocity = jumpDirection * jumpForce;
+            Vector2 jumpDirection = Vector2.up;
+            rb.linearVelocity = i * jumpDirection * jumpForce;
         }
     }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

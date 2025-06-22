@@ -23,14 +23,14 @@ public class HighHeightDisplay : MonoBehaviour
         //タイムリミット内なら入力可
         if (timeLimitController != null && timeLimitController.inputEnabled)
         {
-            float height = player.position.y;
-            heightText.text = "最高到達点：" + height.ToString("F1") + " m";
+            float height = player.position.y / 5;
+            heightText.text = "最高到達点：" + height.ToString("F1") + " km";
         }
         else if (!finish)
         {
-            float height = player.position.y;
-            heightText.text = "最高到達点：" + height.ToString("F1") + " m";
-            score.text = "最高到達点：" + height.ToString("F1") + " m";
+            float height = player.position.y / 5;
+            heightText.text = "最高到達点：" + height.ToString("F1") + " km";
+            score.text = "スコア：" + height.ToString("F1") + " km";
 
             finish = true;
         }

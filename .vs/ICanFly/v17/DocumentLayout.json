@@ -3,8 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\41yuu\\OneDrive\\Desktop\\ICanFly\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F6C90742-73AC-07A5-1E04-E0CCEA8C9D1F}|Assembly-CSharp.csproj|c:\\users\\41yuu\\onedrive\\desktop\\icanfly\\assets\\scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F6C90742-73AC-07A5-1E04-E0CCEA8C9D1F}|Assembly-CSharp.csproj|C:\\Users\\41yuu\\OneDrive\\Desktop\\ICanFly\\assets\\scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F6C90742-73AC-07A5-1E04-E0CCEA8C9D1F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6C90742-73AC-07A5-1E04-E0CCEA8C9D1F}|Assembly-CSharp.csproj|c:\\users\\41yuu\\onedrive\\desktop\\icanfly\\assets\\scripts\\countdowncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6C90742-73AC-07A5-1E04-E0CCEA8C9D1F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\countdowncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6C90742-73AC-07A5-1E04-E0CCEA8C9D1F}|Assembly-CSharp.csproj|C:\\Users\\41yuu\\OneDrive\\Desktop\\ICanFly\\assets\\scripts\\highheightdisplay.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6C90742-73AC-07A5-1E04-E0CCEA8C9D1F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\highheightdisplay.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6C90742-73AC-07A5-1E04-E0CCEA8C9D1F}|Assembly-CSharp.csproj|C:\\Users\\41yuu\\OneDrive\\Desktop\\ICanFly\\assets\\scripts\\heightdisplay.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6C90742-73AC-07A5-1E04-E0CCEA8C9D1F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\heightdisplay.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6C90742-73AC-07A5-1E04-E0CCEA8C9D1F}|Assembly-CSharp.csproj|c:\\users\\41yuu\\onedrive\\desktop\\icanfly\\assets\\scripts\\titlemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6C90742-73AC-07A5-1E04-E0CCEA8C9D1F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\titlemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F6C90742-73AC-07A5-1E04-E0CCEA8C9D1F}|Assembly-CSharp.csproj|C:\\Users\\41yuu\\OneDrive\\Desktop\\ICanFly\\assets\\scripts\\timelimitcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -22,17 +38,69 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "CountdownController.cs",
+              "DocumentMoniker": "C:\\Users\\41yuu\\OneDrive\\Desktop\\ICanFly\\Assets\\Scripts\\CountdownController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\CountdownController.cs",
+              "ToolTip": "C:\\Users\\41yuu\\OneDrive\\Desktop\\ICanFly\\Assets\\Scripts\\CountdownController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\CountdownController.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAB8AAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-22T15:03:23.019Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "HeightDisplay.cs",
+              "DocumentMoniker": "C:\\Users\\41yuu\\OneDrive\\Desktop\\ICanFly\\Assets\\Scripts\\HeightDisplay.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\HeightDisplay.cs",
+              "ToolTip": "C:\\Users\\41yuu\\OneDrive\\Desktop\\ICanFly\\Assets\\Scripts\\HeightDisplay.cs",
+              "RelativeToolTip": "Assets\\Scripts\\HeightDisplay.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-22T14:29:48.508Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "HighHeightDisplay.cs",
+              "DocumentMoniker": "C:\\Users\\41yuu\\OneDrive\\Desktop\\ICanFly\\Assets\\Scripts\\HighHeightDisplay.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\HighHeightDisplay.cs",
+              "ToolTip": "C:\\Users\\41yuu\\OneDrive\\Desktop\\ICanFly\\Assets\\Scripts\\HighHeightDisplay.cs",
+              "RelativeToolTip": "Assets\\Scripts\\HighHeightDisplay.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-22T14:24:37.878Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TitleManager.cs",
+              "DocumentMoniker": "C:\\Users\\41yuu\\OneDrive\\Desktop\\ICanFly\\Assets\\Scripts\\TitleManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\TitleManager.cs",
+              "ToolTip": "C:\\Users\\41yuu\\OneDrive\\Desktop\\ICanFly\\Assets\\Scripts\\TitleManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\TitleManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvxEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-22T13:28:18.603Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "TimeLimitController.cs",
               "DocumentMoniker": "C:\\Users\\41yuu\\OneDrive\\Desktop\\ICanFly\\Assets\\Scripts\\TimeLimitController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\TimeLimitController.cs",
               "ToolTip": "C:\\Users\\41yuu\\OneDrive\\Desktop\\ICanFly\\Assets\\Scripts\\TimeLimitController.cs",
               "RelativeToolTip": "Assets\\Scripts\\TimeLimitController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAEAAAAAAAAAA==",
+              "ViewState": "AgIAABYAAAAAAAAAAAAAwAsAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-10T16:20:21.136Z"
             },
@@ -44,14 +112,14 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerController.cs",
               "ToolTip": "C:\\Users\\41yuu\\OneDrive\\Desktop\\ICanFly\\Assets\\Scripts\\PlayerController.cs",
               "RelativeToolTip": "Assets\\Scripts\\PlayerController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAIwHQAAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-10T16:03:44.55Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "GameManager.cs",
               "DocumentMoniker": "C:\\Users\\41yuu\\OneDrive\\Desktop\\ICanFly\\Assets\\Scripts\\GameManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\GameManager.cs",
