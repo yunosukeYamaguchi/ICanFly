@@ -24,12 +24,12 @@ public class HighHeightDisplay : MonoBehaviour
         if (timeLimitController != null && timeLimitController.inputEnabled)
         {
             float height = player.position.y / 5;
-            heightText.text = "最高到達点：" + height.ToString("F1") + " km";
+            heightText.text = "スコア：" + height.ToString("F1") + " km";
         }
         else if (!finish)
         {
             float height = player.position.y / 5;
-            heightText.text = "最高到達点：" + height.ToString("F1") + " km";
+            heightText.text = "スコア：" + height.ToString("F1") + " km";
             score.text = "スコア：" + height.ToString("F1") + " km";
 
             finish = true;

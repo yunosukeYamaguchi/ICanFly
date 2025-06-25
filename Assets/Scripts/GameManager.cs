@@ -3,6 +3,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public CanvasGroup canvasGroup;
+    public GameObject ana;
 
     public float fadeDuration = 1f;
 
@@ -16,6 +17,8 @@ public class GameManager : MonoBehaviour
         }
 
         canvasGroup.alpha = 0f; // 最初は透明
+
+        ana.SetActive(false);
     }
 
     public void ResultScene()
@@ -26,6 +29,7 @@ public class GameManager : MonoBehaviour
     private System.Collections.IEnumerator FadeIn()
     {
         float elapsed = 0f;
+        ana.SetActive(true);
 
         while (elapsed < fadeDuration)
         {

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 835c9c6ac5532a74bb7803961f605b30
+guid: 3d36303273b174e58851ca200d72f3ee
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4059772655503955581
-    second: wing_right_0
+      213: -6981827254641702772
+    second: cloud_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -72,7 +72,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 16384
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -139,13 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: wing_right_0
+      name: cloud_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 559
-        height: 358
+        y: 7173
+        width: 400
+        height: 2635
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 389a7d7874ac8a7c0800000000000000
-      internalID: -4059772655503955581
+      spriteID: c88c0fb6a119b1f90800000000000000
+      internalID: -6981827254641702772
       vertices: []
       indices: 
       edges: []
@@ -174,7 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      wing_right_0: -4059772655503955581
+      cloud_0: -6981827254641702772
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
