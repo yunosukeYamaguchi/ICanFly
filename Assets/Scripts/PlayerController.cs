@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 7f;
     private Rigidbody2D rb;
     private bool isGrounded;
+    private int lastKey;
 
     private TimeLimitController timeLimitController;
 
@@ -105,11 +106,11 @@ public class PlayerController : MonoBehaviour
         float i = 0;
 
         // キーの押下を毎フレームチェック（GetKey）
-        if (Input.GetKey(KeyCode.Slash)) i++;
-        if (Input.GetKey(KeyCode.Period)) i++;
-        if (Input.GetKey(KeyCode.Semicolon)) i++;
-        if (Input.GetKey(KeyCode.LeftBracket)) i++;
-        if (Input.GetKey(KeyCode.At)) i++;
+        if (Input.GetKey(KeyCode.Slash) && lastKey != 1) { i++; lastKey = 1; }
+        if (Input.GetKey(KeyCode.Period) && lastKey != 2) { i++; lastKey = 2; }
+        if (Input.GetKey(KeyCode.Semicolon) && lastKey != 3) { i++; lastKey = 3; }
+        if (Input.GetKey(KeyCode.LeftBracket) && lastKey != 4) { i++; lastKey = 4; }
+        if (Input.GetKey(KeyCode.At) && lastKey != 5) { i++; lastKey = 5; }
 
         if (i > 0)
         {
