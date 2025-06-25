@@ -4,6 +4,7 @@ public class GameManager : MonoBehaviour
 {
     public CanvasGroup canvasGroup;
     public GameObject ana;
+    public GameObject[] se;
 
     public float fadeDuration = 1f;
 
@@ -19,6 +20,11 @@ public class GameManager : MonoBehaviour
         canvasGroup.alpha = 0f; // 最初は透明
 
         ana.SetActive(false);
+        for (int i = 0; i < se.Length; i++)
+        {
+            if (se[i] != null) se[i].SetActive(false);
+        }
+        se[3].SetActive(true);
     }
 
     public void ResultScene()
@@ -30,6 +36,9 @@ public class GameManager : MonoBehaviour
     {
         float elapsed = 0f;
         ana.SetActive(true);
+        se[1].SetActive(true);
+        se[2].SetActive(true);
+        se[3].SetActive(false);
 
         while (elapsed < fadeDuration)
         {
