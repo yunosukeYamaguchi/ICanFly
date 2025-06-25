@@ -2296,11 +2296,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24200f3bd0d054466a427856197c6e2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 40
+  jumpForce: 30
   gameManager: {fileID: 140490387}
   rightWing: {fileID: 617254656}
   leftWing: {fileID: 920978333}
-  baseSpeed: 10
+  baseSpeed: 50
   flapAngle: 60
   minFlapDuration: 0.05
   playerSpriteRenderer: {fileID: 1807625105}
