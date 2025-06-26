@@ -23,6 +23,9 @@ public class RankingDisplay : MonoBehaviour
     public Button submitButton;
     public Transform rankingContainer;
     public GameObject rankingEntryPrefab;
+    public GameObject scoretext;
+    public GameObject inputimg;
+    public GameObject rankimg;
 
     private float lastScore;
 
@@ -56,6 +59,8 @@ public class RankingDisplay : MonoBehaviour
         submitButton.gameObject.SetActive(false);
 
         DisplayRanking();
+        inputimg.SetActive(false);
+        rankimg.SetActive(true);
     }
 
     void DisplayRanking()
@@ -75,6 +80,8 @@ public class RankingDisplay : MonoBehaviour
             GameObject entryGO = Instantiate(rankingEntryPrefab, rankingContainer);
             var text = entryGO.GetComponent<TextMeshProUGUI>();
             text.text = $"{entry.playerName} - {entry.score:F1} km";
+            var text2 = scoretext.GetComponent<TextMeshProUGUI>();
+            text2.text = $"{entry.playerName} - {entry.score:F1} km";
         }
     }
 }
