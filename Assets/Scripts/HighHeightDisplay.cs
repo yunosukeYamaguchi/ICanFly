@@ -1,6 +1,5 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.SceneManagement; // ← シーン遷移に必要
 
 public class HighHeightDisplay : MonoBehaviour
 {
@@ -35,9 +34,6 @@ public class HighHeightDisplay : MonoBehaviour
             // スコアを一時保存（名前は未入力）
             PlayerPrefs.SetFloat("lastScore", height);
             PlayerPrefs.Save();
-
-            // （任意）ランキングシーンに遷移する場合：
-            SceneManager.LoadScene("RankingScene");
 
             finish = true;
         }

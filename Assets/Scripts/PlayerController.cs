@@ -27,10 +27,6 @@ public class PlayerController : MonoBehaviour
 
     [Header("プレイヤーのSpriteRenderer")]
     public SpriteRenderer playerSpriteRenderer;
-
-    [Header("警告用の画像スプライト")]
-    public Sprite warningSprite;
-
     private bool hasSwitchedImage = false;
     bool karaage;
 
@@ -49,9 +45,8 @@ public class PlayerController : MonoBehaviour
         }
         else if (isGrounded)
         {
-            if (playerSpriteRenderer != null && warningSprite != null && karaage)
+            if (playerSpriteRenderer != null)
             {
-                //playerSpriteRenderer.sprite = warningSprite;
                 this.gameObject.SetActive(false);
                 hasSwitchedImage = true;
                 karaage = false;

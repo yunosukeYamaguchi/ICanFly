@@ -32,38 +32,53 @@ public class RankingDisplay : MonoBehaviour
     void Start()
     {
         lastScore = PlayerPrefs.GetFloat("lastScore", -1f);
+        submitButton.onClick.RemoveAllListeners();
         submitButton.onClick.AddListener(RegisterScore);
 
         if (lastScore < 0)
         {
-            Debug.Log("ƒXƒRƒA‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ");
+            Debug.Log("ã‚¹ã‚³ã‚¢ãŒè¨˜éŒ²ã•ã‚Œã¦ã„ã¾ã›ã‚“");
             DisplayRanking();
+        }
+    }
+
+    void Update()
+    {
+        // Escapeã‚­ãƒ¼ã§ãƒ©ãƒ³ã‚­ãƒ³ã‚°ãƒ‡ãƒ¼ã‚¿ã‚’å‰Šé™¤
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            PlayerPrefs.DeleteKey("ranking");
+            PlayerPrefs.Save();
+            Debug.Log("ãƒ©ãƒ³ã‚­ãƒ³ã‚°ãƒ‡ãƒ¼ã‚¿ã‚’å‰Šé™¤ã—ã¾ã—ãŸ");
+            
+            // è¡¨ç¤ºã•ã‚Œã¦ã„ã‚‹ãƒ©ãƒ³ã‚­ãƒ³ã‚°ã‚’æ¶ˆã™
+            foreach (Transform child in rankingContainer)
+            {
+                Destroy(child.gameObject);
+            }
         }
     }
 
     void RegisterScore()
     {
-        string playerName = string.IsNullOrWhiteSpace(nameInput.text) ? "–¼–³‚µ" : nameInput.text;
+        string playerName = string.IsNullOrWhiteSpace(nameInput.text) ? "åç„¡ã—" : nameInput.text;
 
         string json = PlayerPrefs.GetString("ranking", "");
         ScoreEntryList scoreList = string.IsNullOrEmpty(json) ? new ScoreEntryList() : JsonUtility.FromJson<ScoreEntryList>(json);
 
         var newEntry = new ScoreEntry { playerName = playerName, score = lastScore };
         scoreList.entries.Add(newEntry);
-        scoreList.entries = scoreList.entries.OrderByDescending(e => e.score).Take(10).ToList();
+        scoreList.entries = scoreList.entries.OrderByDescending(e => e.score).Take(100).ToList();
 
-        // ƒ‰ƒ“ƒLƒ“ƒO“à‚Å©•ª‚Ì‡ˆÊ‚ğ’T‚·i0ƒx[ƒXj
         int rank = scoreList.entries.FindIndex(e => e.playerName == playerName && e.score == lastScore) + 1;
 
         string updatedJson = JsonUtility.ToJson(scoreList);
         PlayerPrefs.SetString("ranking", updatedJson);
         PlayerPrefs.Save();
 
-        // ‡ˆÊ•t‚«‚Å•\¦
         var text2 = scoretext.GetComponent<TextMeshProUGUI>();
-        text2.text = $"{rank}ˆÊ: {playerName} - {lastScore:F1} km";
+        text2.text = $"{rank} : {playerName} - {lastScore:F1} km";
 
-        // UIØ‚è‘Ö‚¦
         nameInput.gameObject.SetActive(false);
         submitButton.gameObject.SetActive(false);
         inputimg.SetActive(false);
@@ -79,20 +94,18 @@ public class RankingDisplay : MonoBehaviour
 
         ScoreEntryList scoreList = JsonUtility.FromJson<ScoreEntryList>(json);
 
-        // Šù‘¶ƒ‰ƒ“ƒLƒ“ƒOíœ
         foreach (Transform child in rankingContainer)
         {
             Destroy(child.gameObject);
         }
 
-        // ƒ‰ƒ“ƒLƒ“ƒO¶¬i‡ˆÊ•t‚«j
         for (int i = 0; i < scoreList.entries.Count; i++)
         {
             ScoreEntry entry = scoreList.entries[i];
 
             GameObject entryGO = Instantiate(rankingEntryPrefab, rankingContainer);
             var text = entryGO.GetComponent<TextMeshProUGUI>();
-            text.text = $"{i + 1}ˆÊ: {entry.playerName} - {entry.score:F1} km";
+            text.text = $"{i + 1} : {entry.playerName} - {entry.score:F1} km";
         }
     }
 }

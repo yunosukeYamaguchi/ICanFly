@@ -19,9 +19,14 @@ public class TimeLimitController : MonoBehaviour
 
     public bool inputEnabled = true;
 
+    public GameObject[] kieee;
+    public int voice;
+
     void Start()
     {
         inputEnabled = true;
+
+        voice = Random.Range(0, 5);
     }
 
     void Update()
@@ -39,6 +44,8 @@ public class TimeLimitController : MonoBehaviour
                     playerSpriteRenderer.sprite = warningSprite;
                     hasSwitchedImage = true;
                     Debug.Log("警告スプライトに切り替え");
+
+                    kieee[voice].SetActive(true);
                 }
             }
 

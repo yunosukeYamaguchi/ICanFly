@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement; // ← シーン遷移に必要
 
 public class GameManager : MonoBehaviour
 {
@@ -48,5 +49,12 @@ public class GameManager : MonoBehaviour
         }
 
         canvasGroup.alpha = 1f; // 念のため完全表示
+
+        Invoke("LoadScene", 3f);
+    }
+
+    void LoadScene()
+    {
+        SceneManager.LoadScene("RankingScene");
     }
 }
