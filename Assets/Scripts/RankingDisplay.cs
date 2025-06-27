@@ -48,19 +48,28 @@ public class RankingDisplay : MonoBehaviour
         string json = PlayerPrefs.GetString("ranking", "");
         ScoreEntryList scoreList = string.IsNullOrEmpty(json) ? new ScoreEntryList() : JsonUtility.FromJson<ScoreEntryList>(json);
 
-        scoreList.entries.Add(new ScoreEntry { playerName = playerName, score = lastScore });
+        var newEntry = new ScoreEntry { playerName = playerName, score = lastScore };
+        scoreList.entries.Add(newEntry);
         scoreList.entries = scoreList.entries.OrderByDescending(e => e.score).Take(10).ToList();
+
+        // ランキング内で自分の順位を探す（0ベース）
+        int rank = scoreList.entries.FindIndex(e => e.playerName == playerName && e.score == lastScore) + 1;
 
         string updatedJson = JsonUtility.ToJson(scoreList);
         PlayerPrefs.SetString("ranking", updatedJson);
         PlayerPrefs.Save();
 
+        // 順位付きで表示
+        var text2 = scoretext.GetComponent<TextMeshProUGUI>();
+        text2.text = $"{rank}位: {playerName} - {lastScore:F1} km";
+
+        // UI切り替え
         nameInput.gameObject.SetActive(false);
         submitButton.gameObject.SetActive(false);
-
-        DisplayRanking();
         inputimg.SetActive(false);
         rankimg.SetActive(true);
+
+        DisplayRanking();
     }
 
     void DisplayRanking()
@@ -70,18 +79,20 @@ public class RankingDisplay : MonoBehaviour
 
         ScoreEntryList scoreList = JsonUtility.FromJson<ScoreEntryList>(json);
 
+        // 既存ランキング削除
         foreach (Transform child in rankingContainer)
         {
             Destroy(child.gameObject);
         }
 
-        foreach (ScoreEntry entry in scoreList.entries)
+        // ランキング生成（順位付き）
+        for (int i = 0; i < scoreList.entries.Count; i++)
         {
+            ScoreEntry entry = scoreList.entries[i];
+
             GameObject entryGO = Instantiate(rankingEntryPrefab, rankingContainer);
             var text = entryGO.GetComponent<TextMeshProUGUI>();
-            text.text = $"{entry.playerName} - {entry.score:F1} km";
-            var text2 = scoretext.GetComponent<TextMeshProUGUI>();
-            text2.text = $"{entry.playerName} - {entry.score:F1} km";
+            text.text = $"{i + 1}位: {entry.playerName} - {entry.score:F1} km";
         }
     }
 }

@@ -3,8 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\chiro\\Desktop\\ICanFly\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F6C90742-73AC-07A5-1E04-E0CCEA8C9D1F}|Assembly-CSharp.csproj|c:\\users\\chiro\\desktop\\icanfly\\assets\\scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F6C90742-73AC-07A5-1E04-E0CCEA8C9D1F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F6C90742-73AC-07A5-1E04-E0CCEA8C9D1F}|Assembly-CSharp.csproj|c:\\users\\chiro\\desktop\\icanfly\\assets\\scripts\\rankingdisplay.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6C90742-73AC-07A5-1E04-E0CCEA8C9D1F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\rankingdisplay.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6C90742-73AC-07A5-1E04-E0CCEA8C9D1F}|Assembly-CSharp.csproj|c:\\users\\chiro\\desktop\\icanfly\\assets\\scripts\\highheightdisplay.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6C90742-73AC-07A5-1E04-E0CCEA8C9D1F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\highheightdisplay.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6C90742-73AC-07A5-1E04-E0CCEA8C9D1F}|Assembly-CSharp.csproj|c:\\users\\chiro\\desktop\\icanfly\\assets\\scripts\\timelimitcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6C90742-73AC-07A5-1E04-E0CCEA8C9D1F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\timelimitcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,14 +27,40 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "PlayerController.cs",
-              "DocumentMoniker": "C:\\Users\\chiro\\Desktop\\ICanFly\\Assets\\Scripts\\PlayerController.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerController.cs",
-              "ToolTip": "C:\\Users\\chiro\\Desktop\\ICanFly\\Assets\\Scripts\\PlayerController.cs",
-              "RelativeToolTip": "Assets\\Scripts\\PlayerController.cs",
+              "Title": "RankingDisplay.cs",
+              "DocumentMoniker": "C:\\Users\\chiro\\Desktop\\ICanFly\\Assets\\Scripts\\RankingDisplay.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\RankingDisplay.cs",
+              "ToolTip": "C:\\Users\\chiro\\Desktop\\ICanFly\\Assets\\Scripts\\RankingDisplay.cs",
+              "RelativeToolTip": "Assets\\Scripts\\RankingDisplay.cs",
+              "ViewState": "AgIAADQAAAAAAAAAAAAUwEEAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-27T01:23:19.044Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "HighHeightDisplay.cs",
+              "DocumentMoniker": "C:\\Users\\chiro\\Desktop\\ICanFly\\Assets\\Scripts\\HighHeightDisplay.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\HighHeightDisplay.cs",
+              "ToolTip": "C:\\Users\\chiro\\Desktop\\ICanFly\\Assets\\Scripts\\HighHeightDisplay.cs",
+              "RelativeToolTip": "Assets\\Scripts\\HighHeightDisplay.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-25T07:39:08.936Z",
+              "WhenOpened": "2025-06-27T01:22:56.796Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TimeLimitController.cs",
+              "DocumentMoniker": "C:\\Users\\chiro\\Desktop\\ICanFly\\Assets\\Scripts\\TimeLimitController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\TimeLimitController.cs",
+              "ToolTip": "C:\\Users\\chiro\\Desktop\\ICanFly\\Assets\\Scripts\\TimeLimitController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\TimeLimitController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-27T01:22:28.635Z",
               "EditorCaption": ""
             }
           ]
