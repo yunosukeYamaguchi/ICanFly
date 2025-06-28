@@ -26,6 +26,7 @@ public class RankingDisplay : MonoBehaviour
     public GameObject scoretext;
     public GameObject inputimg;
     public GameObject rankimg;
+    public GameObject Ranking;
 
     private float lastScore;
 
@@ -57,6 +58,14 @@ public class RankingDisplay : MonoBehaviour
                 Destroy(child.gameObject);
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            RegisterScore();
+
+            Ranking.SetActive(true);
+        }
+        
     }
 
     void RegisterScore()
